@@ -1,0 +1,21 @@
+[
+  {
+    "cartItemId": 54,
+    "cartId": 2,
+    "productName": "Fuze Tea 4*1.5L",
+    "productId": 11,
+    "amount": 5,
+    "totalPrice": 100,
+    "img": "https://img.zapmarket.co.il/images/B_7290011018313/dm_1.jpg"
+  },
+  {
+    "cartItemId": 55,
+    "cartId": 2,
+    "productName": "Wagyu A5 Beef",
+    "productId": 5,
+    "amount": 1,
+    "totalPrice": 250,
+    "img": "https://cdn.shopify.com/s/files/1/0021/0862/0858/products/F_W.WagyuSirloinA5_grande.jpg"
+  }
+]
+Total Sum: "350"

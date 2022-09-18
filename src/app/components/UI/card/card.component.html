@@ -1,0 +1,25 @@
+<mat-card class="productCard">
+  <mat-card-header>
+    <div
+      mat-card-avatar
+      [style.backgroundImage]="
+        'url(../../../../assets/imgs/' + product.category + '.png)'
+      "
+      class="ProductHeader"
+    ></div>
+    <mat-card-title class="productName">{{ product.name }}</mat-card-title>
+    <mat-card-subtitle>{{ product.category }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{ product.img }}" alt="Photo of a product" />
+  <mat-card-content class="priceProduct">
+    <label for="productPrice">Price : </label>
+    <p class="productPrice">&nbsp;{{ product.price }} ₪</p>
+  </mat-card-content>
+  <mat-card-actions class="cardActions" align="start">
+    <button *ngIf="!isAdmin" class="addToCartBtn" mat-mini-fab (click)="openDialog()" (addToCartClicked)="onAddToCartClicked()">
+      <mat-icon>add_shopping_cart</mat-icon>
+    </button>
+    <button *ngIf="isAdmin" class="editProduct" mat-mini-fab (click)="onEditProductClicked()"><mat-icon>edit</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

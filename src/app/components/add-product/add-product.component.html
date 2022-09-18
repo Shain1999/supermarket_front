@@ -1,0 +1,67 @@
+<mat-card class="addProductCard" *ngIf="isVisible"> 
+<mat-card-subtitle>Add</mat-card-subtitle>
+<mat-card-content class="addProductContent">
+    <form [formGroup]="addProductForm" class="userForm">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="enter product name" formControlName="name" required />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Price</mat-label>
+        <input
+          matInput
+          placeholder="enter product price"
+          formControlName="price"
+          required
+        />
+        <mat-error *ngIf="price.errors?.['pattern']">
+          only <strong>Numbers</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Category</mat-label>
+            <mat-select formControlName="category" name="category" [(value)]="category">
+              <mat-option *ngFor="let category of categoriesArray" [value]="category.id">
+                {{category.name}}
+              </mat-option>
+            </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Img</mat-label>
+        <input
+          matInput
+          placeholder="enter img url"
+          formControlName="img"
+          required
+        />
+        <mat-error *ngIf="img.errors?.['pattern']">
+          Img format <strong>Only</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-card-actions>
+    
+      <div>
+        <button
+          mat-raised-button
+          [disabled]="addProductForm.invalid"
+          (click)="onAddClicked()"
+        >
+          Add
+        </button>
+        <button
+          mat-raised-button
+          (click)="onCloseClicked()"
+        >
+          Close
+        </button>
+      </div>
+    </mat-card-actions>
+
+    </form>
+    <div class="previewImg" *ngIf="img.valid">
+        
+    <mat-card-subtitle>preview Img</mat-card-subtitle>
+    <img mat-card-lg-image [src]="addProductForm.controls['img'].value" alt="preview img" >
+</div>
+  </mat-card-content>
+</mat-card>

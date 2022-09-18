@@ -1,0 +1,44 @@
+.productCard {
+    max-width: 400px;
+}
+
+.ProductHeader {
+    background-size: cover;
+    object-fit: center;
+}
+
+.addToCartBtn {}
+
+.cardActions {
+    & button {
+        margin-left: 10%;
+    }
+}
+
+.productName {
+    font-size: 1.2rem;
+    font-weight: 600;
+
+    height: 40px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 50%;
+    aspect-ratio: 1/1;
+    margin: 0 auto 5%;
+
+
+}
+
+.priceProduct {
+    display: flex;
+    width: fit-content;
+
+    & p {
+        font-weight: bold;
+    }
+
+}

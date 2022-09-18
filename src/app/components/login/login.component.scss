@@ -1,0 +1,67 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+
+
+}
+
+.loginForm {
+    width: fit-content;
+    margin: 5% auto;
+    border: 2px solid rgba(78, 78, 78, .2);
+    background-color: #fff;
+    padding: 3rem;
+    border-radius: 2vh;
+    width: 30%;
+}
+
+.loginBtnContainer {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.registerArea {
+    display: flex;
+    padding-top: 1rem;
+
+    & p {
+        width: fit-content;
+        margin: auto 0;
+    }
+}
+
+.logInTitle {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto 5%;
+}
+
+.logInTitle::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: -5px;
+    background-color: rgba(78, 78, 78, .5);
+    width: 100%;
+    height: 3px;
+    content: "";
+    transition: ease-out 0.3s;
+    border-radius: 100%;
+}
+
+.loginInputContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1rem;
+    box-shadow: 0 0 1rem rgba(78, 78, 78, .1);
+    border-radius: 10px;
+    margin: 10% 0;
+
+}
+
+.logInImg {
+    aspect-ratio: 4/3;
+    width: 50%;
+    padding: 2rem;
+}

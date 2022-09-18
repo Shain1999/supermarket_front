@@ -1,0 +1,78 @@
+.container {
+    position: relative;
+    border: 2px solid rgba(78, 78, 78, .5);
+    border-radius: 10px;
+
+    max-width: 1000px;
+    background-color: #fff;
+    display: flex;
+    margin: 4% auto 0;
+
+}
+
+.container::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 50%;
+    background-color: rgba(78, 78, 78, .5);
+    width: 2px;
+    height: 100%;
+    animation: shadow 250ms normal 300ms forwards ease-out;
+    content: "";
+
+    transition: ease-out 0.3s;
+}
+
+.orderSummaryContol {
+    border: 2px solid transparent;
+    width: fit-content;
+    margin: auto;
+}
+
+.orderStepper {
+    border-right: none;
+    width: 50%;
+    max-width: 500px;
+    border-radius: 10px;
+
+}
+
+.formField {
+    margin-top: 5%;
+}
+
+.creditCardForm {
+    display: grid;
+}
+
+.validationBtn{
+    margin: 5% auto;
+}
+
+form {
+    text-align: center;
+}
+
+@keyframes glow {
+    0% {
+        border-color: #fff;
+        box-shadow: 0 0 5px rgba(255, 255, 255, .2),
+            inset 0 0 5px rgba(255, 255, 255, .2);
+    }
+
+    100% {
+        border-color: rgb(12, 30, 130);
+        box-shadow: 0 0 25px rgba(255, 255, 255, .6),
+            inset 0 0 10px rgba(255, 255, 255, .9);
+    }
+}
+
+.miniCardDetails {
+
+    display: flex;
+    justify-content: space-between;
+    & .formField{
+        width: 40%;
+    }
+}

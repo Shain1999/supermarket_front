@@ -1,0 +1,34 @@
+.orderSummaryCard{
+    width: 100%;
+}
+.orderSummaryItem{
+    border: 1px solid rgba(78, 78, 78, 0.194) ;
+    padding: 1rem;
+}
+.orderSummaryTitle{
+    margin-bottom: 8%;
+}
+.finishOrderArea {
+    background-color: rgb(11, 20, 73);
+    color: #fff;
+    border: 2px solid rgba(11, 20, 73);
+    padding: 0.5rem;
+    border-radius: 20px;
+    margin: 5% 0;
+    width: fit-content;
+    display: flex;
+
+    & p {
+        font-size: larger;
+        width: fit-content;
+        margin: auto 0;
+        text-align: center;
+    }
+    & button{
+        animation: glow 800ms ease-out infinite alternate;
+
+    }
+
+    justify-content: space-around;
+
+}

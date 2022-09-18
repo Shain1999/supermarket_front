@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="shoppingCartContainer" *ngIf="!isAdmin">
+    <mat-card class="shoppingCartCard" *ngIf="!isShoppingCart">
+      <mat-card-subtitle>{{ userName }}</mat-card-subtitle>
+      <mat-card-title>Shopping Cart</mat-card-title>
+      <mat-card-content>
+        <app-shopping-cart></app-shopping-cart>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-button [disabled]="isEmpty" (click)="navToPlaceOrder()">
+          Place Order
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card *ngIf="isShoppingCart">
+      <mat-card-subtitle>{{ userName }}</mat-card-subtitle>
+      <mat-card-title>No shopping cart created</mat-card-title>
+      <mat-card-content>
+        <img
+          mat-card-xl-image
+          src="../../../assets/imgs/shoppingCart.png"
+          alt=""
+        />
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="onCreateShoppingCartClicked()"
+        >
+          Click to create cart
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="adminDashboardContainer" *ngIf="isAdmin">
+    <mat-card class="adminDashBoard">
+      <mat-card-subtitle>{{ userName }} admin board</mat-card-subtitle>
+      <mat-card-title>Hello Admin</mat-card-title>
+      <mat-card-content class="adminContent">
+      <app-edit-product></app-edit-product>
+      <app-add-product></app-add-product>
+    </mat-card-content>
+
+      <mat-card-actions class="adminActions" *ngIf="isAddProdVisible">
+        <mat-label class="addProductLabel">click to add product</mat-label>
+        <button (click)="onAddProductClicked()" mat-mini-fab class="addProduct" color="primary">
+          <mat-icon>add_circle_outline</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="productsContainer">
+    <div class="filterArea">
+      <form class="filterForm" [formGroup]="filterForm">
+        <mat-form-field class="nameFilterField" appearance="fill">
+          <mat-label>Search</mat-label>
+          <input
+            type="tel"
+            formControlName="filterData"
+            matInput
+            placeholder="Search for product name"
+          />
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </form>
+      <mat-radio-group
+        [(ngModel)]="categoryFilter"
+        class="categoryToggleGroup"
+        aria-label=""
+      >
+        <app-category-btn
+          *ngFor="let category of categoriesArray"
+          [categoryName]="category.name"
+        ></app-category-btn>
+        <mat-radio-button value="all" aria-label="categoryName"
+          >All
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="productsGrid">
+      <app-card
+        *ngFor="
+          let product of productsArray
+            | productsNameFilter: filterForm.controls.filterData.value
+            | productsCategoryFilter: categoryFilter
+        "
+        [product]="product"
+        [isAdmin]="isAdmin"
+        (editCardClicked)="onEditProductClicked($event)"
+      ></app-card>
+    </div>
+  </div>
+</div>

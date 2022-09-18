@@ -1,0 +1,52 @@
+<div class="container" >
+  <img class="logInImg" src="../../../assets/imgs/LoginPage.png" alt="">
+<form [formGroup]="loginForm" class="loginForm">
+  <h1 class="logInTitle">Log In</h1>
+  <div class="loginInputContainer">
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your email</mat-label>
+      <input
+        formControlName="email"
+        matInput
+        placeholder="pat@example.com"
+        [formControl]="email"
+        required
+      />
+      <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your password</mat-label>
+      <input
+        formControlName="password"
+        [formControl]="password"
+        matInput
+        [type]="hide ? 'password' : 'text'"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+  <div class="loginBtnContainer">
+    <button
+      (click)="onLoginClicked()"
+      [disabled]="this.loginForm.valid == true ? false : true"
+      mat-raised-button
+      color="primary"
+      class="loginBtn"
+    >
+      Log In
+    </button>
+  </div>
+  <div class="registerArea">
+    <p class="notMemberP">Not a member yet ? </p>
+    <button mat-icon-button (click)="navToRegister()"><mat-icon>person_add</mat-icon></button>
+  </div>
+</form>
+</div>

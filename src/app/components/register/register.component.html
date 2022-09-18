@@ -1,0 +1,146 @@
+<div class="container">
+<h1 class="registerTitle">Register</h1>
+<mat-horizontal-stepper linear #stepper class="registerStepper">
+
+  <mat-step
+  [completed]="userCredentialsForm.valid"
+    [stepControl]="userCredentialsForm"
+    errorMessage="Please fill all credentials"
+    [hasError]="userCredentialsForm.invalid"
+  >
+    <form [formGroup]="userCredentialsForm" class="userForm">
+      <ng-template matStepLabel>Fill out your credentials</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>ID</mat-label>
+        <input matInput placeholder="299391912" formControlName="id" required />
+        <mat-error *ngIf="id.errors?.['validID']">
+          ID must be 9 <strong>numbers</strong>
+        </mat-error>
+        <mat-error *ngIf="id.errors?.['isUserExist']">
+          ID already <strong>Exist</strong>
+        </mat-error>
+        <mat-error *ngIf="id.errors?.['pattern']">
+          only <strong>numbers</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="path@gmail.com"
+          formControlName="email"
+          required
+        />
+        <mat-error *ngIf="email.errors?.['isEmailExist']">
+          Email already <strong>Exist</strong>
+        </mat-error>
+        <mat-error *ngIf="email.errors?.['email']">
+          email format <strong>only</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          placeholder="enter your password"
+          formControlName="password"
+          type="password"
+          required
+        />
+        
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Re enter Password</mat-label>
+        <input
+          matInput
+          placeholder="enter your password"
+          formControlName="reEnterPassword"
+          type="password"
+          required
+        />
+        <mat-error *ngIf="reEnterPassword.errors?.['mustMatch']">
+          passwords must <strong>Match</strong>
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-button [disabled]="userCredentialsForm.invalid" matStepperNext>Next</button>
+
+      </div>
+    </form>
+  </mat-step>
+  <mat-step
+
+  [completed]="userInfoForm.valid"
+
+    [stepControl]="userInfoForm"
+    errorMessage="Please fill all info"
+    [hasError]="userInfoForm.invalid"
+  >
+    <form [formGroup]="userInfoForm" class="userForm">
+      <ng-template matStepLabel>Fill out your info</ng-template>
+      
+      <mat-form-field appearance="fill">
+        <mat-label>City</mat-label>
+        <mat-select formControlName="city" name="food">
+          <mat-option *ngFor="let city of cityArray" [value]="city.value">
+            {{city.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Street</mat-label>
+        <input
+          matInput
+          placeholder="Ex. 1 Main St"
+          formControlName="street"
+          required
+        />
+        
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>First Name</mat-label>
+        <input
+          matInput
+          placeholder="enter your first name"
+          formControlName="firstName"
+          required
+        />
+        <mat-error *ngIf="firstName.errors?.['pattern']">
+          only <strong>letters</strong>
+        </mat-error>
+        
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Last Name</mat-label>
+        <input
+          matInput
+          placeholder="enter your last name"
+          formControlName="lastName"
+          required
+        />
+        <mat-error *ngIf="lastName.errors?.['pattern']">
+          only <strong>letters</strong>
+        </mat-error>
+        
+      </mat-form-field>
+      <div class="actionBtns">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button [disabled]="userInfoForm.invalid" (click)="onRegisterClicked()" matStepperNext class="registerBtn" >Register</button>
+
+        <!-- <button mat-button [disabled]="submited" matStepperNext>Next</button> -->
+      <button mat-button (click)="stepper.reset()">Reset</button>
+
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Start Shopping</ng-template>
+    <p>You are now done with registeration </p>
+    <p>You can start shopping now</p>
+
+    <div>
+      <button mat-raised-button color="primary" (click)="onStartShoppingClicked()">Start Shopping</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+</div>

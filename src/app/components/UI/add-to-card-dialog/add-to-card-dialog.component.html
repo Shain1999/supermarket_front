@@ -1,0 +1,30 @@
+<mat-card class="addToCartCard">
+  <mat-card-title-group>
+    <mat-card-title>{{ data.product.name }}</mat-card-title>
+    <mat-card-subtitle>{{ data.product.category }}</mat-card-subtitle>
+    <img mat-card-xl-image [src]="data.product.img" />
+  </mat-card-title-group>
+  <mat-card-content>
+    <form [formGroup]="newAmountForm" class="form-container">
+      <div class="amountInputContainer">
+        <mat-form-field appearance="outline">
+          <mat-label>Enter Amount</mat-label>
+          <input
+            formControlName="newAmount"
+            matInput
+            type="number"
+            placeholder="enter amount"
+            [formControl]="newAmount"
+            required
+          />
+          <mat-error *ngIf="newAmount.invalid">{{ getErrorMessage() }}</mat-error>
+        </mat-form-field>
+        <button mat-mini-fab color="primary" aria-label="addToCartBtn" (click)="addItemToCart()">
+            <mat-icon>add_shopping_cart</mat-icon>
+          </button>
+      </div>
+      
+    </form>
+  </mat-card-content>
+  
+</mat-card>

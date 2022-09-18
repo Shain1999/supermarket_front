@@ -1,0 +1,46 @@
+<div class="shoppingCart">
+  <cdk-accordion class="shoppingCartAccordion"  >
+
+    <cdk-accordion-item 
+      *ngFor="let item of shoppingCartItems; let index = index"
+      #accordionItem="cdkAccordionItem"
+      class="shoppingCartAccordion-item"
+      role="button"
+      tabindex="0"
+      [attr.id]="'accordion-header-' + index"
+      [attr.aria-expanded]="accordionItem.expanded"
+      [attr.aria-controls]="'accordion-body-' + index"
+    >
+      <div
+        class="shoppingCartAccordion-item-header"
+        (click)="accordionItem.toggle()"
+      >
+        <mat-card-header>
+          <div mat-card-avatar class="itemHeader">
+            <img class="itemImg" mat-card-sm-image [src]="item.img" />
+          </div>
+          <mat-card-title>{{ item.productName }}</mat-card-title>
+          <mat-card-subtitle>amount :{{ item.amount }}</mat-card-subtitle>
+        </mat-card-header>
+        <span class="shoppingCartAccordion-item-description">
+          Click to {{ accordionItem.expanded ? "close" : "edit" }}
+        </span>
+      </div>
+      <app-update-cart-item
+        class="shoppingCartAccordion-item-body"
+        role="region"
+        [style.display]="accordionItem.expanded ? '' : 'none'"
+        [attr.id]="'accordion-body-' + index"
+        [attr.aria-labelledby]="'accordion-header-' + index"
+        [shoppingCartItem]="item"
+        (saveClicked)="updateCartItem($event)"
+        (deleteClicked)="deleteCartItem($event)"
+        (eventClicked)="accordionItem.toggle()"
+      >
+      </app-update-cart-item>
+    </cdk-accordion-item>
+
+    <strong><p *ngIf="shoppingCartItems.length==0">No items in cart</p></strong>
+    <p *ngIf="shoppingCartItems.length>0" class="totalPriceP">Total Price : {{shoppingCartTotalSum}} ₪</p>
+  </cdk-accordion>
+</div>

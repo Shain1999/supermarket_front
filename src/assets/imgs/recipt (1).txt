@@ -1,0 +1,21 @@
+[
+  {
+    "cartItemId": 57,
+    "cartId": 5,
+    "productName": "Coca-Cola 6*1.5L ",
+    "productId": 9,
+    "amount": 5,
+    "totalPrice": 250,
+    "img": "https://macolet.net/Cat_387221_2251.jpg"
+  },
+  {
+    "cartItemId": 58,
+    "cartId": 5,
+    "productName": "T-Bone 1 k.g",
+    "productId": 6,
+    "amount": 5,
+    "totalPrice": 1500,
+    "img": "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/9/10/0/FNK_Pan-Fried-TBone-Steak_V2_H_s4x3.jpg.rend.hgtvcom.616.462.suffix/1568395000705.jpeg"
+  }
+]
+Total Sum: "1750"

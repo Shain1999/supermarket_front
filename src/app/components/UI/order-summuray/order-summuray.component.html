@@ -1,0 +1,25 @@
+<mat-card class="orderSummaryCard">
+  <mat-card-title-group>
+    <mat-card-title class="orderSummaryTitle">Order Summary</mat-card-title>
+    <mat-card-subtitle>items</mat-card-subtitle>
+  </mat-card-title-group>
+  <mat-card-content
+    class="orderSummaryItem"
+    *ngFor="let item of orderSummaryArray"
+  >
+    {{ item.productName }} * {{ item.amount }} = {{ item.totalPrice }} ₪
+  </mat-card-content>
+  <mat-card-content> Total Sum: {{ totalOrderSum }} ₪ </mat-card-content>
+  <mat-card-actions>
+    <div *ngIf="isValidated" class="finishOrderArea">
+      <p>Order</p>
+      <button
+        mat-icon-button
+        [disabled]="isValidated ? false : true"
+        (click)="onOrderClicked()"
+      >
+        <mat-icon>check_circle_outline</mat-icon>
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,35 @@
+<span class="cartItemContainer">
+  <span class="sliderAmount">
+  <mat-label>Change Amount</mat-label>
+  <mat-slider
+  class="slider"
+    thumbLabel
+    [displayWith]="formatLabel"
+    tickInterval="5"
+    [(ngModel)]="sliderValue"
+    step="1"
+    min="1"
+    max="20"
+    aria-label="units"
+  >
+  </mat-slider>
+</span>
+  <span class="cartItemActions">
+    <button
+      mat-mini-fab
+      color="primary"
+      aria-label="saveIcon"
+      (click)="onSaveClicked()"
+    >
+      <mat-icon>thumb_up</mat-icon>
+    </button>
+    <button
+      mat-mini-fab
+      color="primary"
+      aria-label="deleteIcon"
+      (click)="onDeleteClicked()"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  </span>
+</span>

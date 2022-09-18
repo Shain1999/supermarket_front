@@ -1,0 +1,17 @@
+.cartItemContainer{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.sliderAmount{
+    width: 65%;
+    & .slider{
+        width: fit-content;
+        margin-left: 10%;
+    }
+}
+.cartItemActions{
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+}
